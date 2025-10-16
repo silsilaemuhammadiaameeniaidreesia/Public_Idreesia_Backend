@@ -3,7 +3,7 @@ const logger = require('./logger');
 const { mysqlConfig } = require('./vars');
 
 /**
- * Connect to mysql db
+ * Connect to mysql database
  *
  * @returns {object} mysql connection
  * @public

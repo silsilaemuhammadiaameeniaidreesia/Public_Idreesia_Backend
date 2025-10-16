@@ -6,7 +6,7 @@ const app = require('./config/express');
 // const mongoose = require('./config/mysql');
 // const mysql = require('./config/database');
 
-// Test route - Hello World
+// Test route
 app.get('/', (req, res) => {
   res.send('Hello World');
 });

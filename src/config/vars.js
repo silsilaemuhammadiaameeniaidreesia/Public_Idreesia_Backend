@@ -1,7 +1,7 @@
 const path = require('path');
 
 // import .env variables
-// Only load .env file if not on Vercel (Vercel uses environment variables)
+// Only load .env file if not on Vercel
 if (process.env.VERCEL !== '1') {
   require('dotenv-safe').config({
     path: path.join(__dirname, '../../.env'),
