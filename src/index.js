@@ -6,10 +6,17 @@ const app = require('./config/express');
 // const mongoose = require('./config/mysql');
 // const mysql = require('./config/database');
 
-console.log('PORT:', process.env.PORT);
+// Test route - Hello World
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
-// listen to requests
-app.listen(port, () => logger.info(`server started on port ${port} (${env})`));
+// Only start server if running locally (not on Vercel)
+if (process.env.VERCEL !== '1') {
+  console.log('PORT:', process.env.PORT);
+  // listen to requests
+  app.listen(port, () => logger.info(`server started on port ${port} (${env})`));
+}
 
 /**
 * Exports express

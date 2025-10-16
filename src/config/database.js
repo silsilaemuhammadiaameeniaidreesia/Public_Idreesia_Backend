@@ -13,6 +13,15 @@ const sequelize = new Sequelize(mysqlConfig.database, mysqlConfig.user, mysqlCon
   {
     host: mysqlConfig.host,
     dialect: 'mysql',
+    // Serverless-friendly connection pooling
+    pool: {
+      max: 2,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+    // Reduce connection overhead for serverless
+    logging: false,
   });
 
 async function checkConnection() {
