@@ -24,6 +24,10 @@ const route = Object.freeze({
   MEHFIL_REPORTS: "/mehfil-reports",
   Tabarukat: "/tabarukat",
   NEW_KARKUN: "/new-karkun",
+  NEW_EHAD_FOLLOW_UP: "/new-ehad-follow-ups",
+  MEHFIL_COORDINATOR: "/mehfil-coordinators",
+  DUTY_TYPE: "/duty-types-data",
+  DUTY_ROSTER: "/duty-rosters-data",
 });
 
 module.exports = { route };

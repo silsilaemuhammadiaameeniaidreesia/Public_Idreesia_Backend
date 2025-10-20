@@ -25,6 +25,10 @@ const karkunJoinRequestsRoute = require("./karkunJoinRequests.route");
 const mehfilReportsRoute = require("./mehfil-reports.route");
 const tabarukatRoute = require("./tabarukat.route");
 const newKarkunRoute = require("./newKarkun.route");
+const newEhadFollowUpRoute = require("./newEhadFollowUp.route");
+const mehfilCoordinatorRoute = require("./mehfilCoordinator.route");
+const dutyTypeRoute = require("./dutyType.route");
+const dutyRosterRoute = require("./dutyRoster.route");
 const { route } = require("../../Enums/routeEnums");
 
 const router = express.Router();
@@ -64,6 +68,10 @@ router.use(route.KARKUN_JOIN_REQUEST, karkunJoinRequestsRoute);
 router.use(route.MEHFIL_REPORTS, mehfilReportsRoute);
 router.use(route.NEW_KARKUN, newKarkunRoute);
 router.use(route.Tabarukat, tabarukatRoute);
+router.use(route.NEW_EHAD_FOLLOW_UP, newEhadFollowUpRoute);
+router.use(route.MEHFIL_COORDINATOR, mehfilCoordinatorRoute);
+router.use(route.DUTY_TYPE, dutyTypeRoute);
+router.use(route.DUTY_ROSTER, dutyRosterRoute);
 
 // Health check route
 router.get("/healthcheck", (req, res) => {

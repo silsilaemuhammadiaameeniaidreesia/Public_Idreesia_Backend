@@ -18,17 +18,37 @@ exports.getNamazTimings = async (req, res, next) => {
 exports.createNamazTiming = async (req, res, next) => {
   console.log('Add namaz')
   try {
-    const { namaz_name, namaz_time
+    const { 
+      fajr, 
+      dhuhr, 
+      jumma, 
+      asr, 
+      maghrib, 
+      isha, 
+      description_en, 
+      description_ur,
+      created_by 
     } = req.body;
 
-    if (!namaz_name || !namaz_time)  {
+    // Validate required fields (all prayer times are required)
+    if (!fajr || !dhuhr || !jumma || !asr || !maghrib || !isha)  {
       return res.status(400).json({
         success: false,
-        message: 'Missing required fields: name , time are required.',
+        message: 'Missing required fields: fajr, dhuhr, jumma, asr, maghrib, and isha are required.',
       });
     }
 
-    const result = await namazService.createNamazTiming({ namaz_name, namaz_time});
+    const result = await namazService.createNamazTiming({ 
+      fajr, 
+      dhuhr, 
+      jumma, 
+      asr, 
+      maghrib, 
+      isha, 
+      description_en, 
+      description_ur,
+      created_by 
+    });
     return res.status(201).json({
       success: true,
       message: 'Namaz Timing created successfully',
@@ -45,7 +65,17 @@ exports.updateNamazTiming = async (req, res, next) => {
   try {
     console.log('req.body',req.body);
     const { id } = req.params;
-    const { namaz_name , namaz_time } = req.body;
+    const { 
+      fajr, 
+      dhuhr, 
+      jumma, 
+      asr, 
+      maghrib, 
+      isha, 
+      description_en, 
+      description_ur,
+      updated_by 
+    } = req.body;
 
     if (!id) {
       return res.status(400).json({
@@ -54,14 +84,26 @@ exports.updateNamazTiming = async (req, res, next) => {
       });
     }
 
-    if (!namaz_name || !namaz_time) {
+    // Validate required fields (all prayer times are required)
+    if (!fajr || !dhuhr || !jumma || !asr || !maghrib || !isha) {
       return res.status(400).json({
         success: false,
-        message: 'Missing required fields: name , time are required.',
+        message: 'Missing required fields: fajr, dhuhr, jumma, asr, maghrib, and isha are required.',
       });
     }
 
-    const result = await namazService.updateNamazTiming({ id, namaz_name , namaz_time });
+    const result = await namazService.updateNamazTiming({ 
+      id, 
+      fajr, 
+      dhuhr, 
+      jumma, 
+      asr, 
+      maghrib, 
+      isha, 
+      description_en, 
+      description_ur,
+      updated_by 
+    });
 
     if (!result) {
       return res.status(404).json({

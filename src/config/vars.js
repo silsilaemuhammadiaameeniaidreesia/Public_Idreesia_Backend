@@ -1,19 +1,11 @@
 const path = require('path');
 
 // import .env variables
-// Only load .env file if not on Vercel
-if (process.env.VERCEL !== '1') {
-  require('dotenv-safe').config({
-    path: path.join(__dirname, '../../.env'),
-    example: path.join(__dirname, '../../.env.example'),
-    allowEmptyValues: true,
-  });
-} else {
-  // On Vercel, just use dotenv without the safe check
-  require('dotenv-safe').config({
-    allowEmptyValues: true,
-  });
-}
+require('dotenv-safe').config({
+  path: path.join(__dirname, '../../.env'),
+  example: path.join(__dirname, '../../.env.example'),
+  allowEmptyValues: true,
+});
 
 console.log(process.env.MYSQL_HOST);
 
