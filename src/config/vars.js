@@ -1,13 +1,15 @@
 const path = require('path');
 
 // import .env variables
-require('dotenv-safe').config({
-  path: path.join(__dirname, '../../.env'),
-  example: path.join(__dirname, '../../.env.example'),
-  allowEmptyValues: true,
-});
+// Use dotenv instead of dotenv-safe for Vercel compatibility
+// (Vercel sets env vars directly, doesn't use .env files)
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({
+    path: path.join(__dirname, '../../.env'),
+  });
+}
 
-console.log(process.env.MYSQL_HOST);
+console.log('MYSQL_HOST:', process.env.MYSQL_HOST);
 
 module.exports = {
   env: process.env.NODE_ENV,
