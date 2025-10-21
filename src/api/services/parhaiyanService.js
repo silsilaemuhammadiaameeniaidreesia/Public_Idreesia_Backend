@@ -60,6 +60,7 @@ exports.getParhaiyans = async ({ page = 1, size = 25, search = '',requestUrl=''}
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error fetching parhaiyan:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -117,6 +118,7 @@ exports.updateParhaiyan = async ({id ,title_en, title_ur ,description_ur ,descri
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error update Parhaiyan:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

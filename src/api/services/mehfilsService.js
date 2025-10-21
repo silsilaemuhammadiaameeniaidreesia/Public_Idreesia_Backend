@@ -192,6 +192,7 @@ exports.updateMehfil = async ({
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error update Mehfil:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

@@ -55,6 +55,7 @@ exports.getNamazTimings = async ({ page = 1, size = 50, search = '',requestUrl='
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error fetching namaz timings:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -99,6 +100,7 @@ exports.updateNamazTiming = async ({id ,namaz_name , namaz_time}) => {
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error update namaz time:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

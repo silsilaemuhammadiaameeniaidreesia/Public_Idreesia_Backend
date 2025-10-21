@@ -68,6 +68,7 @@ exports.getEhadKarkun = async ({ page = 1, size = 50, search = '', requestUrl = 
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error fetching zone:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -166,6 +167,7 @@ exports.updateEhadKarkun = async ({ id, zone_id,
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error update zone:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

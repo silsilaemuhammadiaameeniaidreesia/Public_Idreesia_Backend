@@ -14,9 +14,14 @@ exports.getMessages = async (req, res, next) => {
       search,
       requestUrl,
     });
+    
+    // Debug logging
+    logger.info(`Messages fetched: ${result?.data?.length || 0} records`);
+    logger.info(`Result structure: ${JSON.stringify(Object.keys(result || {}))}`);
+    
     return res.json(result);
   } catch (error) {
-    logger.error("Error fetching taleem:", error);
+    logger.error("Error fetching messages:", error);
     return next(error);
   }
 };

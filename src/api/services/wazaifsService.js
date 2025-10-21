@@ -68,6 +68,7 @@ exports.getWazaifs = async ({
   } catch (error) {
     // Log the error message for debugging purposes
     logger.error("Error fetching wazaifs: " + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -133,6 +134,7 @@ exports.updateWazaifShareef = async ({
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error update Wazaif:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

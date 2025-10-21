@@ -67,6 +67,7 @@ exports.getMessages = async ({
   } catch (error) {
     // Log any errors encountered during the process for debugging purposes
     logger.error("Error fetching messages:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

@@ -56,6 +56,7 @@ exports.getTags = async ({
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error fetching categories:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -115,6 +116,7 @@ exports.updateTag = async ({ id, name, normalized }) => {
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error update Tag:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

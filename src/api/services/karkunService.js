@@ -118,6 +118,7 @@ exports.getKarkun = async ({
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error fetching karkun:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -200,6 +201,7 @@ exports.updateKarkun = async ({
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error update karkun:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

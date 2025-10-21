@@ -20,8 +20,8 @@ exports.getTaleem = async ({ page = 1, size = 25, category = '', search = '',req
       Category.SHORT_TALEEMAT,
     ]; // Allowed category values
 
-    // Validate the category parameter
-    if (!allowedCategories.includes(category.toLowerCase())) {
+    // Validate the category parameter (empty string is allowed, treated as 'all')
+    if (category && !allowedCategories.includes(category.toLowerCase())) {
       return {
         success: false,
         error: `Invalid category. Allowed categories are: ${allowedCategories.join(',')}`,
@@ -73,7 +73,8 @@ exports.getTaleem = async ({ page = 1, size = 25, category = '', search = '',req
       meta,
     };
   } catch (error) {
-    logger.error('Error fetching taleem:'+error.message)
+    logger.error('Error fetching taleem:'+error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -135,6 +136,7 @@ exports.updateTaleemShareef = async ({ id,slug, title_en, title_ur ,description 
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error update Taleem Shareef:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

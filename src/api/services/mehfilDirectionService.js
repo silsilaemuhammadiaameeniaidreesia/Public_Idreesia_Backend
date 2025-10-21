@@ -76,6 +76,7 @@ console.log('data',data);
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error fetching mehfil-Direction:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -202,6 +203,7 @@ exports.updateMehfilDirection = async ({id ,zone_id,
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error update mehfil-Direction:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

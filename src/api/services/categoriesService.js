@@ -57,6 +57,7 @@ exports.getCategories = async ({ page = 1, size = 25, search = '',requestUrl=''}
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error fetching categories:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -103,6 +104,7 @@ exports.updateCategory = async ({ slug, title_en, title_ur, id, status }) => {
     };
   } catch (error) {
     logger.error('Error update categories:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

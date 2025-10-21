@@ -57,6 +57,7 @@ exports.getParhaiyanRecitations = async ({ page = 1, size = 25, search = '',requ
   } catch (error) {
     // Log any errors encountered during the process
     logger.error('Error fetching parhaiyan:' + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 

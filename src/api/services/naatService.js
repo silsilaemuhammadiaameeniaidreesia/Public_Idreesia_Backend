@@ -23,8 +23,8 @@ exports.getNaatShareefs = async ({
       Category.OLD_NAAT_SHAREEF,
     ]; // Allowed category values
 
-    // Validate the category parameterSSSWDDEDSC CwdrwedW3F GTB3  ew
-    if (!allowedCategories.includes(category.toLowerCase())) {
+    // Validate the category parameter (empty string is allowed, treated as 'all')
+    if (category && !allowedCategories.includes(category.toLowerCase())) {
       return {
         success: false,
         error: `Invalid category. Allowed categories are: ${allowedCategories.join(
@@ -101,6 +101,7 @@ exports.getNaatShareefs = async ({
     };
   } catch (error) {
     logger.error("Error fetching naats:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
@@ -178,6 +179,7 @@ exports.updateNaatShareef = async ({
   } catch (error) {
     // Log any errors encountered during the process
     logger.error("Error update Naat Shareef:" + error.message);
+    throw error; // Re-throw the error so the controller can handle it properly
   }
 };
 
