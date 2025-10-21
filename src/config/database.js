@@ -1,3 +1,4 @@
+'use server';
 const { Sequelize } = require('sequelize');
 const logger = require('./logger');
 const { mysqlConfig } = require('./vars');
