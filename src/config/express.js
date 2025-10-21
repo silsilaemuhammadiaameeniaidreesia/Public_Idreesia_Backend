@@ -37,7 +37,13 @@ app.use(cors());
 
 // mount api v1 routes
 // app.use('/v1', routes);
+app.use(express.json());
 app.use('/api', routes);
+
+// simple test route
+app.get('/', (req, res) => {
+  res.send('API is running 🚀');
+});
 
 // if error is not an instanceOf APIError, convert it.
 app.use(error.converter);

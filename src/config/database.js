@@ -16,7 +16,6 @@ const sequelize = new Sequelize(
   {
     host: mysqlConfig.host,
     dialect: 'mysql',
-    dialectModule: mysql2, // 👈 Explicitly tell Sequelize which module to use
     pool: {
       max: 2,
       min: 0,
